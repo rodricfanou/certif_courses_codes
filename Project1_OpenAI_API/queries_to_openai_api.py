@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+# The examples mentioned in this code are inspired from DataCamp's track for Forward Deployed Engineers
 
-# Example 1: Ask Chatgpt to write a polite reply accepting an AI engineer job offer.
+# Use case 1: Ask Chatgpt to write a polite reply accepting an AI engineer job offer.
 
 # Create the OpenAI client
 client = OpenAI(api_key="<OPENAI_API_TOKEN>")
@@ -19,7 +20,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 
 
-# Example 2: Announce my new AI Engineer role on LinkedIn.
+# Use case 2: Announce my new AI Engineer role on LinkedIn.
 
 client = OpenAI(api_key="<OPENAI_API_TOKEN>")
 
@@ -35,7 +36,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 
 
-# Example 3: Ask chatgpt for a quick productivity tip
+# Use case 3: Ask chatgpt for a quick productivity tip
 
 client = OpenAI(api_key="<OPENAI_API_TOKEN>")
 
@@ -48,7 +49,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 
 
-# Example 4: Text manipulation
+# Use case 4: Text manipulation
 
 prompt = """
 Update name to Carlos, pronouns to he/him, and job title to Senior Content Developer
@@ -70,7 +71,7 @@ print(response.choices[0].message.content)
 # is R which he uses for his statistical analysis.
 
 
-# Example 5: Text summarization
+# Use case 5: Text summarization
 
 test = "Long text provided by the user"  # the text can be really long or not
 prompt = f""" Summarize the customer support data into three key points {test} """
@@ -86,7 +87,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 
 
-# Example 6: Discuss planes rather than cars in the text below; enforce max token to 100
+# Use case 6: Discuss planes rather than cars in the text below; enforce max token to 100
 
 client = OpenAI(api_key="<OPENAI_API_TOKEN>")
 
@@ -105,3 +106,47 @@ print(response.choices[0].message.content)
 
 # Output:
 # A plane is a vehicle that is typically powered by jet engines or propellers. It has wings and is designed to carry passengers and/or cargo through the air. Planes have become a ubiquitous part of modern society and are used for a wide variety of purposes, such as commuting, travel, and transportation of goods. Planes are often associated with freedom, independence, and mobility.
+
+
+# Use case 7: Summarize a long text into 2 bullets
+
+finance_text = "Long finance text"
+
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Use an f-string to format the prompt
+prompt = f"""Summarize the following text into two concise bullet points:
+{finance_text}"""
+
+# Create a request to the Chat Completions endpoint
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": prompt}],
+    max_completion_tokens=400
+)
+
+print(response.choices[0].message.content)
+
+
+# Use case 8: Compose the cost of the execution of a prompt
+
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": prompt}],
+    max_completion_tokens=max_completion_tokens
+)
+
+input_token_price = 0.15 / 1_000_000
+output_token_price = 0.6 / 1_000_000
+
+# Extract token usage
+input_tokens = response.usage.prompt_tokens
+output_tokens = max_completion_tokens
+# Calculate cost
+cost = (input_tokens * input_token_price + output_tokens * output_token_price)
+print(f"Estimated cost: ${cost}")
+
+# Output:
+# Estimated cost: $0.0003492
