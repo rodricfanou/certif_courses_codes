@@ -1,14 +1,8 @@
 # certif_courses_codes
-Codes written while following certification courses
+Codes written while following diverse certification courses
 
 
-## About the Project; 
-This repo is for testing purposes.
-
-We would be analysis some data from the **Premier League** and *La Liga*
-
-![La Liga logo](https://assets.laliga.com/assets/logos/laliga-v/laliga-v-300x300.jpg)
+## Project 1: Using OpenAI API for sending requests and fetching responses from ChatGPT
+In this project we explore different types of requests that could be sent to OpenAI API. And how these could be used to send requests and fetch responses from ChatGPT.
 
 
-
-###### Credits:
