@@ -22,8 +22,6 @@ print(response.choices[0].message.content)
 
 # Use case 2: Announce my new AI Engineer role on LinkedIn.
 
-client = OpenAI(api_key="<OPENAI_API_TOKEN>")
-
 response = client.chat.completions.create(
     # Specify the model
     model="gpt-4o-mini",
@@ -37,8 +35,6 @@ print(response.choices[0].message.content)
 
 
 # Use case 3: Ask chatgpt for a quick productivity tip
-
-client = OpenAI(api_key="<OPENAI_API_TOKEN>")
 
 response = client.chat.completions.create(
     model="gpt-4o-mini",
@@ -89,8 +85,6 @@ print(response.choices[0].message.content)
 
 # Use case 6: Discuss planes rather than cars in the text below; enforce max token to 100
 
-client = OpenAI(api_key="<OPENAI_API_TOKEN>")
-
 prompt = """Replace car with plane and adjust phrase:
 A car is a vehicle that is typically powered by an internal combustion engine or an electric motor. It has four wheels, and is designed to carry passengers and/or cargo on roads or highways. Cars have become a ubiquitous part of modern society, and are used for a wide variety of purposes, such as commuting, travel, and transportation of goods. Cars are often associated with freedom, independence, and mobility."""
 
@@ -112,8 +106,6 @@ print(response.choices[0].message.content)
 
 finance_text = "Long finance text"
 
-client = OpenAI(api_key="<OPENAI_API_TOKEN>")
-
 # Use an f-string to format the prompt
 prompt = f"""Summarize the following text into two concise bullet points:
 {finance_text}"""
@@ -129,8 +121,6 @@ print(response.choices[0].message.content)
 
 
 # Use case 8: Compose the cost of the execution of a prompt
-
-client = OpenAI(api_key="<OPENAI_API_TOKEN>")
 
 response = client.chat.completions.create(
     model="gpt-4o-mini",
@@ -153,8 +143,6 @@ print(f"Estimated cost: ${cost}")
 
 
 # Use case 9: Text Generation
-
-client = OpenAI(api_key="<OPENAI_API_TOKEN>")
 
 # Create a detailed prompt
 prompt = """
