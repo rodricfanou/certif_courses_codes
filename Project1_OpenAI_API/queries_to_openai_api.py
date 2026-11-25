@@ -150,3 +150,28 @@ print(f"Estimated cost: ${cost}")
 
 # Output:
 # Estimated cost: $0.0003492
+
+
+# Use case 9: Text Generation
+
+client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+
+# Create a detailed prompt
+prompt = """
+Generate a product description for SonicPro headphones, including:
+Active noise cancellation (ANC)
+40-hour battery life
+Foldable design
+"""
+
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": prompt}],
+    # Experiment with max_completion_tokens and temperature settings
+    max_completion_tokens=100,
+    # Temperature varies from 0 to 2 - When closer to 0 it varies a little
+    # when closer to 2, it varies a lot.
+    temperature=0.75
+)
+
+print(response.choices[0].message.content)
