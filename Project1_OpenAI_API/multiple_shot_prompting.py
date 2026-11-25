@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 # The examples mentioned in this code are inspired from DataCamp's track for Forward Deployed Engineers
 
+import os
+from openai import OpenAI
+
 # Use case 1: Zero shot prompting
 # Apart from answering questions, transforming text, and generating new text,
 # OpenAI's models can also be used for classification tasks, such as
 # categorization and sentiment analysis.
 
-client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 # Define a multi-line prompt to classify sentiment
 prompt = """Classify the sentiment given by each of those cases using the numbers 1 - 5 (positive to negative):
@@ -33,6 +39,12 @@ print(response.choices[0].message.content)
 
 # Use case 2: One shot prompting
 
+# We create the client for each case to make sure it is a new one.
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
+
 # Add the example to the prompt
 prompt = """Classify sentiment as 1-5 (negative to positive):
 1. Love these! = 5 (positive)
@@ -57,6 +69,10 @@ print(response.choices[0].message.content)
 
 
 # Use case 3: Few-shot prompting: all the examples!
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 # Add the final example
 prompt = """Classify sentiment as 1-5 (negative to positive):

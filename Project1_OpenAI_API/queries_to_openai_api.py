@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 # The examples mentioned in this code are inspired from DataCamp's track for Forward Deployed Engineers
 
+import os
+from openai import OpenAI
+
 # Use case 1: Ask Chatgpt to write a polite reply accepting an AI engineer job offer.
 
 # Create the OpenAI client
-client = OpenAI(api_key="<OPENAI_API_TOKEN>")
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 # Create a request to the Chat Completions endpoint
 response = client.chat.completions.create(
@@ -21,6 +27,10 @@ print(response.choices[0].message.content)
 
 
 # Use case 2: Announce my new AI Engineer role on LinkedIn.
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 response = client.chat.completions.create(
     # Specify the model
@@ -35,6 +45,10 @@ print(response.choices[0].message.content)
 
 
 # Use case 3: Ask chatgpt for a quick productivity tip
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 response = client.chat.completions.create(
     model="gpt-4o-mini",
@@ -46,6 +60,10 @@ print(response.choices[0].message.content)
 
 
 # Use case 4: Text manipulation
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 prompt = """
 Update name to Carlos, pronouns to he/him, and job title to Senior Content Developer
@@ -68,6 +86,10 @@ print(response.choices[0].message.content)
 
 
 # Use case 5: Text summarization
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 test = "Long text provided by the user"  # the text can be really long or not
 prompt = f""" Summarize the customer support data into three key points {test} """
@@ -84,6 +106,10 @@ print(response.choices[0].message.content)
 
 
 # Use case 6: Discuss planes rather than cars in the text below; enforce max token to 100
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 prompt = """Replace car with plane and adjust phrase:
 A car is a vehicle that is typically powered by an internal combustion engine or an electric motor. It has four wheels, and is designed to carry passengers and/or cargo on roads or highways. Cars have become a ubiquitous part of modern society, and are used for a wide variety of purposes, such as commuting, travel, and transportation of goods. Cars are often associated with freedom, independence, and mobility."""
@@ -103,6 +129,10 @@ print(response.choices[0].message.content)
 
 
 # Use case 7: Summarize a long text into 2 bullets
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 finance_text = "Long finance text"
 
@@ -121,6 +151,10 @@ print(response.choices[0].message.content)
 
 
 # Use case 8: Compose the cost of the execution of a prompt
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 response = client.chat.completions.create(
     model="gpt-4o-mini",
@@ -143,6 +177,10 @@ print(f"Estimated cost: ${cost}")
 
 
 # Use case 9: Text Generation
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 # Create a detailed prompt
 prompt = """
