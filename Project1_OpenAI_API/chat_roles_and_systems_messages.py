@@ -101,7 +101,7 @@ response = client.chat.completions.create(
 )
 
 
-# Use Case 5: Creating a chat for conversations with more guardrails
+# Use case 5: Creating a chat for conversations with more guardrails
 # Example conversation can be provided using the assistant role.
 
 client = OpenAI(api_key="<OPENAI_API_TOKEN>")
