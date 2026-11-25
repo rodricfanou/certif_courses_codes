@@ -151,4 +151,5 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 
+# Output
 # Greece is a southeastern European country known for its rich ancient history and contributions to art and philosophy. The capital city is Athens, which is home to iconic landmarks like the Acropolis. Greece is also famous for its beautiful islands, Mediterranean cuisine, and vibrant culture.
